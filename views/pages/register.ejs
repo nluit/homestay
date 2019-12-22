@@ -1,0 +1,202 @@
+<% include ./layouts/header %>
+
+    <body>
+
+        <div class="site-wrap">
+
+            <!-- .site-mobile-menu -->
+
+
+            <% include ./layouts/menu%>
+
+                <% include ./layouts/slider %>
+
+                    <div class="container">
+
+                        <div class="row mt-5">
+                            <div class="col-md-6 mx-auto text-center mb-5 section-heading">
+                                <h2>REGISTER</h2>
+                            </div>
+                        </div>
+                        <form action="/register" method="POST">
+                            <div class="row">
+                                <div class="col-md-6 mx-auto">
+                                    <div class="site-block-27">
+                                        <label for="" class="label text-left text-success">USERNAME</label><br>
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text" id="basic-addon1"><i class="fa fa-user" aria-hidden="true"></i></span>
+                                            </div>
+                                            <input type="text" name="username" required class="form-control">
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="col-md-6 mx-auto">
+                                    <div class="site-block-27">
+                                        <label for="" class="label text-left text-success">PASSWORD</label><br>
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text" id="basic-addon1"><i class="fa fa-lock" aria-hidden="true"></i></span>
+                                            </div>
+                                            <input type="password" title="Must contain at least one number and one uppercase and lowercase letter, and at least 6 or more characters" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,15}" name="password" class="form-control">
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 mx-auto">
+                                    <div class="site-block-27">
+                                        <label for="" class="label text-left text-success">FULL NAME</label><br>
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text" id="basic-addon1"><i class="fa fa-code"></i></span>
+                                            </div>
+                                            <input type="text" name='fullname' required class="form-control">
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="col-md-6 mx-auto">
+                                    <div class="site-block-27">
+                                        <label for="" class="label text-left text-success">GENDER</label><br>
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text" id="basic-addon1"><i class="fa fa-genderless"></i></span>
+                                            </div>
+                                            <select name="gender" class="form-control" id="">
+                                            <option value="male">MALE</option>
+                                            <option value="female">FEMALE</option>
+                                        </select>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-12 mx-auto">
+                                    <div class="site-block-27">
+                                        <label for="" class="label text-left text-success">ID</label><br>
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text" id="basic-addon1"><i class="fa fa-user" aria-hidden="true"></i></span>
+                                            </div>
+                                            <input type="text" name='id' pattern="[0-9]{9}" class="form-control">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6 mx-auto">
+                                    <div class="site-block-27">
+                                        <label for="" class="label text-left text-success">EMAIL</label><br>
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text" id="basic-addon1"><i class="fa fa-envelope"></i></span>
+                                            </div>
+                                            <input type="email" required name="email" class="form-control ">
+
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="col-md-6 mx-auto ">
+                                    <div class="site-block-27 ">
+                                        <label for=" " class="label text-left text-success ">BIRTHDAY</label><br>
+                                        <div class="input-group mb-3 ">
+                                            <div class="input-group-prepend ">
+                                                <span class="input-group-text " id="basic-addon1 "><i class="fa fa-calendar"></i></span>
+                                            </div>
+                                            <input type="date" required name="birthday" class="form-control ">
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="row mb-5 ">
+                                <div class="col-md-6 mx-auto ">
+                                    <div class="site-block-27 ">
+                                        <label for=" " class="label text-left text-success ">ADDRESS</label><br>
+                                        <div class="input-group mb-3 ">
+                                            <div class="input-group-prepend ">
+                                                <span class="input-group-text " id="basic-addon1 "><i class="fa fa-map-marker"></i></span>
+                                            </div>
+                                            <input type="text" required name="address" class="form-control ">
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="col-md-6 mx-auto ">
+                                    <div class="site-block-27 ">
+                                        <label for=" " class="label text-left text-success ">PHONE</label><br>
+                                        <div class="input-group mb-3 ">
+                                            <div class="input-group-prepend ">
+                                                <span class="input-group-text " id="basic-addon1 "><i class="fa fa-phone"></i></span>
+                                            </div>
+                                            <input type="text" pattern="[0-9]{10}" name="phone" class="form-control ">
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="row mb-5 ">
+                                <div class="col-md-12 ">
+                                    <a href="/login">Have a account ? Login </a>
+                                    <br>
+                                    <div class="site-block-27 mt-2">
+                                        <input type="submit" required class="btn btn-success form-control my-2">
+                                    </div>
+                                </div>
+
+                            </div>
+                        </form>
+
+                    </div>
+                    <% include ./layouts/footer %>
+        </div>
+
+        <script src="/suites/suites/js/jquery-3.3.1.min.js "></script>
+        <script src="/suites/suites/js/jquery-migrate-3.0.1.min.js "></script>
+        <script src="/suites/suites/js/jquery-ui.js "></script>
+        <script src="/suites/suites/js/popper.min.js "></script>
+        <script src="/suites/suites/js/bootstrap.min.js "></script>
+        <script src="/suites/suites/js/owl.carousel.min.js "></script>
+        <script src="/suites/suites/js/jquery.stellar.min.js "></script>
+        <script src="/suites/suites/js/jquery.countdown.min.js "></script>
+        <script src="/suites/suites/js/jquery.magnific-popup.min.js "></script>
+        <script src="/suites/suites/js/bootstrap-datepicker.min.js "></script>
+        <script src="/suites/suites/js/aos.js "></script>
+
+
+        <script src="/suites/suites/js/mediaelement-and-player.min.js "></script>
+
+        <script src="/suites/suites/js/main.js "></script>
+
+
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                var mediaElements = document.querySelectorAll('video, audio'),
+                    total = mediaElements.length;
+
+                for (var i = 0; i < total; i++) {
+                    new MediaElementPlayer(mediaElements[i], {
+                        pluginPath: 'https://cdn.jsdelivr.net/npm/mediaelement@4.2.7/build/',
+                        shimScriptAccess: 'always',
+                        success: function() {
+                            var target = document.body.querySelectorAll('.player'),
+                                targetTotal = target.length;
+                            for (var j = 0; j < targetTotal; j++) {
+                                target[j].style.visibility = 'visible';
+                            }
+                        }
+                    });
+                }
+            });
+        </script>
+
+    </body>
+
+    </html>

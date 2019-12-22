@@ -1,0 +1,80 @@
+<div class="main-panel">
+
+    <div class="content-wrapper">
+        <div class="page-header">
+            <h3 class="page-title">
+                Room Type
+            </h3>
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="#">Admin</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Room type</li>
+                </ol>
+            </nav>
+        </div>
+        <form action="/admin/add-service" method="POST">
+            <div class="row grid-margin">
+                <div class="col-md-6 grid-margin stretch-card">
+                    <div class="card">
+                        <div class="card-body">
+                            <fieldset>
+                                <div class="form-group">
+                                    <label class="text-danger">Service ID</label>
+                                    <input readonly class="form-control" value="<%= id[0].MAXID%>" required name="id" minlength="2" type="text" required>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="text-danger">Service Name</label>
+                                    <input class="form-control" required name="name" minlength="2" type="text" required>
+                                </div>
+                                <div class="form-group">
+                                    <label class="text-danger">Service Price</label>
+                                    <input class="form-control" required name="price" minlength="1" type="text" required>
+                                </div>
+                                <div class="form-group">
+                                    <label class="text-danger">Service Description</label>
+                                    <input class="form-control" name="desc" minlength="1" type="text" required>
+                                </div>
+                                <div class="form-group">
+                                    <label class="text-danger">Service Duration </label>
+                                    <input class="form-control" name="duration" required type="text" n>
+                                </div>
+                                <div class="form-group">
+                                    <label class="text-danger">Service Image</label>
+                                    <input class="form-control" name="image">
+                                </div>
+
+                                <div class="form-group my-5">
+                                    <input class="btn btn-primary" id="btnsubmit" type="submit" value="Submit">
+                                    <input class="btn btn-primary" type="reset" value="Cancel">
+                                </div>
+
+                            </fieldset>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 grid-margin stretch-card">
+                    <div class="card">
+                        <div class="card-body">
+                            <fieldset>
+                                <div class="form-group">
+                                    <label for="curl" class="text-danger"> Facility </label>
+                                    <% data.map(function(item,i){%>
+                                        <div class="form-check my-2">
+                                            <label class="form-check-label">
+                                                <input type="checkbox" class="form-check-input" name="facility" id="" value="<%= item.FAC_ID%>" checked>
+                                                    <%= item.FAC_NAME %>
+                                          </label>
+                                        </div>
+                                        <%})%>
+                                </div>
+
+                            </fieldset>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </form>
+
+    </div>

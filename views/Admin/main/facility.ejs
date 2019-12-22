@@ -1,0 +1,74 @@
+<div class="main-panel">
+
+    <div class="content-wrapper">
+        <div class="page-header">
+            <h3 class="page-title">
+                LIST OF FACILITY
+            </h3>
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="#">Admin</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Danh sách</li>
+                </ol>
+            </nav>
+        </div>
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Danh sách </h4>
+                <div class="row">
+                    <div class="col-12">
+                        <div class="table-responsive">
+                            <table id="order-listing" class="table">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>IMG</th>
+
+                                        <th>NAME</th>
+                                        <th>ADDRESS </th>
+                                        <th> PHONE</th>
+                                        <th>RATE</th>
+                                        <th>DESC</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <% data.map(function(item){%>
+                                        <tr>
+                                            <td>
+                                                <%= item.FAC_ID %>
+                                            </td>
+                                            <td class="py-1">
+                                                <img src="<%= item.FAC_IMG %>" alt="image" />
+                                            </td>
+                                            <td>
+                                                <%= item.FAC_NAME %>
+                                            </td>
+                                            <td>
+                                                <%= item.FAC_ADDRESS %>
+                                            </td>
+                                            <td>
+                                                <%= item.FAC_PHONE %>
+                                            </td>
+                                            <td>
+                                                <%= item.FAC_RATE %>
+                                            </td>
+
+                                            <td>
+                                                <%= item.FAC_DESC %>
+                                            </td>
+                                        </tr>
+                                        <%})%>
+                                </tbody>
+
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
+        <br>
+
+
+        <br>
+    </div>

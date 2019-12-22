@@ -1,0 +1,80 @@
+<div class="main-panel">
+
+    <div class="content-wrapper">
+        <div class="page-header">
+            <h3 class="page-title">
+                Room Type
+            </h3>
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="#">Admin</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Room type</li>
+                </ol>
+            </nav>
+        </div>
+        <form action="/admin/room-type" method="POST">
+            <div class="row grid-margin">
+                <div class="col-md-6 grid-margin stretch-card">
+                    <div class="card">
+                        <div class="card-body">
+                            <fieldset>
+                                <div class="form-group">
+                                    <label class="text-danger">Room Type ID</label>
+                                    <input readonly class="form-control" value="<%= id[0].MAXID%>" required name="TypeID" minlength="2" type="text" required>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="text-danger">Room Type Name</label>
+                                    <input class="form-control" required name="Name" minlength="2" type="text" required>
+                                </div>
+                                <div class="form-group">
+                                    <label class="text-danger">Max Customer</label>
+                                    <input class="form-control" required name="maxCustomer" minlength="1" type="text" required>
+                                </div>
+                                <div class="form-group">
+                                    <label class="text-danger">Size</label>
+                                    <input class="form-control" name="size" minlength="1" type="text" required>
+                                </div>
+                                <div class="form-group">
+                                    <label class="text-danger">Price</label>
+                                    <input class="form-control" name="price" required type="text" n>
+                                </div>
+                                <div class="form-group">
+                                    <label class="text-danger">Descriptions</label>
+                                    <input class="form-control" name="Descriptions">
+                                </div>
+
+                                <div class="form-group my-5">
+                                    <input class="btn btn-primary" id="btnsubmit" type="submit" value="Submit">
+                                    <input class="btn btn-primary" type="reset" value="Cancel">
+                                </div>
+
+                            </fieldset>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 grid-margin stretch-card">
+                    <div class="card">
+                        <div class="card-body">
+                            <fieldset>
+                                <div class="form-group">
+                                    <label for="curl" class="text-danger"> Feature </label>
+                                    <% data.map(function(item,i){%>
+                                        <div class="form-check my-2">
+                                            <label class="form-check-label">
+                                            <input type="checkbox" class="form-check-input" name="feature" id="" value="<%= item.FEATURE_ID%>" checked>
+                                                <%= item.FEATURE_NAME %>
+                                      </label>
+                                        </div>
+                                        <%})%>
+                                </div>
+
+                            </fieldset>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </form>
+
+    </div>

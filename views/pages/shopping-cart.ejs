@@ -1,0 +1,285 @@
+<% include ./layouts/header %>
+
+    <body>
+
+        <div class="site-wrap">
+
+            <!-- .site-mobile-menu -->
+
+
+            <% include ./layouts/menu%>
+
+                <% include ./layouts/slider %>
+
+                    <div class="container">
+
+                        <div class="row mt-5">
+                            <div class="col-md-6 mx-auto text-center mb-5 section-heading">
+                                <h2>Shopping cart</h2>
+                            </div>
+                        </div>
+                        <div class="row mb-5">
+                            <div class="col-md-6">
+                                <div class="site-block-27">
+                                    <label for="" class="label text-left text-danger">Check in Date</label><br>
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text" id="basic-addon1"><i class="fa fa-calendar" aria-hidden="true"></i></span>
+                                        </div>
+                                        <input type="date" id="checkin" value="<%= checkin.checkin %>" readonly class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="site-block-27">
+                                    <label for="" class="label text-left text-danger">Check out Date</label><br>
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text" id="basic-addon1"><i class="fa fa-calendar" aria-hidden="true"></i></span>
+                                        </div>
+                                        <input type="date" readonly id="checkout" value="<%= checkout.checkout %>" class="form-control">
+
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12 mx-auto">
+                                <% if( data.length !=0 ) {%>
+
+                                    <table class="table mb-5">
+                                        <thead>
+
+                                            <tr>
+                                                <th>ID</th>
+                                                <th>Room Image</th>
+                                                <th>Room Type Name</th>
+                                                <th>Facility Name</th>
+                                                <th>Room Price</th>
+                                                <th>Remove</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <% data.map(function(i){%>
+                                                <tr>
+                                                    <td>
+                                                        <%= i.item[0].ROOM_ID %>
+                                                    </td>
+                                                    <td class="my-1">
+                                                        <img src="<%= i.item[0].ROOM_IMG %>" width="50" alt="">
+                                                    </td>
+                                                    <td>
+                                                        <%= i.item[0].ROOMTYPE_NAME %>
+                                                    </td>
+                                                    <td>
+                                                        <%= i.item[0].FAC_NAME  %>
+                                                    </td>
+                                                    <td>
+                                                        <%= i.price %>
+                                                    </td>
+                                                    <td>
+                                                        <!-- <button class="btn btn-danger"> <i class="fa fa-trash"></i></button> -->
+                                                        <a href="/remove/<%= i.item[0].ROOM_ID %>" class="btn btn-success form-control"> <i class="fa fa-trash"> </i></a>
+                                                    </td>
+                                                </tr>
+                                                <%})%>
+                                                    <tr class="my-5">
+                                                        <td colspan="6">
+                                                            <form class="form-inline my-4 float-right">
+                                                                <div class="form-group">
+                                                                    <label for=""></label>
+                                                                    <select class="form-control float-right" name="customer" id="customer">
+                                                                    <option value="0" selected> Current Customer Info</option>
+                                                                    <option value="1"> New Customer Info</option>
+                                                                </select>
+                                                                </div>
+                                                                <input name="" id="confirm" class="btn btn-primary form-control ml-3" type="button" value="Add">
+
+                                                            </form>
+
+                                                        </td>
+                                                    </tr>
+                                        </tbody>
+                                    </table>
+                                    <% }%>
+                                        <% if(data.length ==0 ) {%>
+                                            <div class="alert alert-primary text-center" role="alert">
+                                                <span>Cart is empty</span>
+                                            </div>
+                                            <%}%>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="container mb-5">
+                        <div class="row">
+                            <div class="col-md-12" id="result">
+                            </div>
+
+                        </div>
+                        <div class="card border-primary" id="register">
+                            <div class="card-body">
+                                <form action="/register" method="POST">
+
+                                    <div class="row">
+                                        <div class="col-md-6 mx-auto">
+                                            <div class="site-block-27">
+                                                <label for="" class="label text-left text-success">FULL NAME</label><br>
+                                                <div class="input-group mb-3">
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text" id="basic-addon1"><i class="fa fa-code"></i></span>
+                                                    </div>
+                                                    <input type="text" name='fullname' id="fullname" required class="form-control">
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                        <div class="col-md-6 mx-auto">
+                                            <div class="site-block-27">
+                                                <label for="" class="label text-left text-success">GENDER</label><br>
+                                                <div class="input-group mb-3">
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text" id="basic-addon1"><i class="fa fa-genderless"></i></span>
+                                                    </div>
+                                                    <select name="gender" class="form-control" id="gender">
+                                                <option value="male">MALE</option>
+                                                <option value="female">FEMALE</option>
+                                            </select>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md-12 mx-auto">
+                                            <div class="site-block-27">
+                                                <label for="" class="label text-left text-success">ID</label><br>
+                                                <div class="input-group mb-3">
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text" id="basic-addon1"><i class="fa fa-user" aria-hidden="true"></i></span>
+                                                    </div>
+                                                    <input type="text" name='id' id='id' pattern="[0-9]{9}" class="form-control">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md-6 mx-auto">
+                                            <div class="site-block-27">
+                                                <label for="" class="label text-left text-success">EMAIL</label><br>
+                                                <div class="input-group mb-3">
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text" id="basic-addon1"><i class="fa fa-envelope"></i></span>
+                                                    </div>
+                                                    <input type="email" required name="email" id="email" class="form-control ">
+
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                        <div class="col-md-6 mx-auto ">
+                                            <div class="site-block-27 ">
+                                                <label for=" " class="label text-left text-success ">BIRTHDAY</label><br>
+                                                <div class="input-group mb-3 ">
+                                                    <div class="input-group-prepend ">
+                                                        <span class="input-group-text " id="basic-addon1 "><i class="fa fa-calendar"></i></span>
+                                                    </div>
+                                                    <input type="date" required name="birthday" id="birthday" class="form-control ">
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <div class="row mb-5 ">
+                                        <div class="col-md-6 mx-auto ">
+                                            <div class="site-block-27 ">
+                                                <label for=" " class="label text-left text-success ">ADDRESS</label><br>
+                                                <div class="input-group mb-3 ">
+                                                    <div class="input-group-prepend ">
+                                                        <span class="input-group-text " id="basic-addon1 "><i class="fa fa-map-marker"></i></span>
+                                                    </div>
+                                                    <input type="text" id='address' required name="address" class="form-control ">
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                        <div class="col-md-6 mx-auto ">
+                                            <div class="site-block-27 ">
+                                                <label for=" " class="label text-left text-success ">PHONE</label><br>
+                                                <div class="input-group mb-3 ">
+                                                    <div class="input-group-prepend ">
+                                                        <span class="input-group-text " id="basic-addon1 "><i class="fa fa-phone"></i></span>
+                                                    </div>
+                                                    <input type="text" pattern="[0-9]{10}" id="phone" name="phone" class="form-control ">
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12 ">
+                                            <div class="site-block-27 mt-2">
+                                                <a class="float-right btn btn-success" id="notify"> Confirm </a>
+                                                <a href="/" class=" float-right btn btn-success mr-2 ">Back</a>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </form>
+
+                            </div>
+                        </div>
+
+                    </div>
+
+        </div>
+
+        <% include ./layouts/footer %>
+            </div>
+            <script src="/suites/suites/js/jquery-3.3.1.min.js "></script>
+            <script src='https://momentjs.com/downloads/moment.min.js'></script>
+            <script src="/suites/suites/js/jquery-migrate-3.0.1.min.js "></script>
+            <script src="/suites/suites/js/jquery-ui.js "></script>
+            <script src="/suites/suites/js/popper.min.js "></script>
+            <script src="/suites/suites/js/bootstrap.min.js "></script>
+            <script src="/suites/suites/js/owl.carousel.min.js "></script>
+            <script src="/suites/suites/js/jquery.stellar.min.js "></script>
+            <!-- <script src="/suites/suites/js/jquery.counthown.min.js "></script> -->
+            <script src="/suites/suites/js/jquery.magnific-popup.min.js "></script>
+            <script src="/suites/suites/js/bootstrap-datepicker.min.js "></script>
+            <script src="/suites/suites/js/aos.js "></script>
+
+            <script src="/suites/suites/js/mediaelement-and-player.min.js "></script>
+
+            <script src="/suites/suites/js/main.js "></script>
+
+            <script src='https://cdnjs.cloudflare.com/ajax/libs/mouse0270-bootstrap-notify/3.1.7/bootstrap-notify.min.js'></script>
+            <script src='/suites/suites/js/shopping-cart.js'></script>
+
+            <script>
+                document.addEventListener('DOMContentLoaded', function() {
+                    var mediaElements = document.querySelectorAll('video, audio'),
+                        total = mediaElements.length;
+
+                    for (var i = 0; i < total; i++) {
+                        new MediaElementPlayer(mediaElements[i], {
+                            pluginPath: 'https://cdn.jsdelivr.net/npm/mediaelement@4.2.7/build/',
+                            shimScriptAccess: 'always',
+                            success: function() {
+                                var target = document.body.querySelectorAll('.player'),
+                                    targetTotal = target.length;
+                                for (var j = 0; j < targetTotal; j++) {
+                                    target[j].style.visibility = 'visible';
+                                }
+                            }
+                        });
+                    }
+                });
+            </script>
+
+    </body>
+
+    </html>

@@ -1,0 +1,104 @@
+<% include ../layouts/header %>
+
+    <body>
+
+        <div class="site-wrap">
+
+            <!-- .site-mobile-menu -->
+
+            <% include ../layouts/menu%>
+
+
+                <% include ../layouts/slider %>
+
+                    <div class="site-section bg-light">
+
+                        <% for(let i = 0; i < data.length; i++) {%>
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-md-6 mx-auto text-center mb-5 section-heading">
+                                        <h2 class="mb-5">
+                                            <%= data[i][0].fac_name %>
+                                        </h2>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <% data[i].map(function(item) {%>
+                                        <div class="col-md-6 col-lg-4 mb-5">
+                                            <!-- <a href="/room-info/<%= item.ROOM_ID   %>">
+                                                <%= item.fac_name %>
+                                            </a> -->
+                                            <div class="hotel-room text-center">
+                                                <a href="/room-info/<%= item.ROOM_ID   %>" class="d-block mb-0 thumbnail">
+                                                <img src="<%= item.ROOM_IMG %>"  alt="Image" class="img-fluid">
+                                            </a>
+                                                <div class="hotel-room-body">
+                                                    <h3 class="heading mb-0">
+                                                        <%= item.roomtype_name%>
+                                                            <br>
+
+
+                                                    </h3>
+                                                </div>
+                                            </div>
+
+
+                                        </div>
+                                        <%})%>
+                                </div>
+
+                            </div>
+                            <%}%>
+
+                    </div>
+        </div>
+
+
+
+
+        <% include ../layouts/footer %>
+            </div>
+
+            <script src="/suites/suites/js/jquery-3.3.1.min.js"></script>
+            <script src="/suites/suites/js/jquery-migrate-3.0.1.min.js"></script>
+            <script src="/suites/suites/js/jquery-ui.js"></script>
+            <script src="/suites/suites/js/popper.min.js"></script>
+            <script src="/suites/suites/js/bootstrap.min.js"></script>
+            <script src="/suites/suites/js/owl.carousel.min.js"></script>
+            <script src="/suites/suites/js/jquery.stellar.min.js"></script>
+            <script src="/suites/suites/js/jquery.countdown.min.js"></script>
+            <script src="/suites/suites/js/jquery.magnific-popup.min.js"></script>
+            <script src="/suites/suites/js/bootstrap-datepicker.min.js"></script>
+            <script src="/suites/suites/js/aos.js"></script>
+
+
+            <script src="/suites/suites/js/mediaelement-and-player.min.js"></script>
+
+            <script src="/suites/suites/js/main.js"></script>
+
+
+            <script>
+                document.addEventListener('DOMContentLoaded', function() {
+                    var mediaElements = document.querySelectorAll('video, audio'),
+                        total = mediaElements.length;
+
+                    for (var i = 0; i < total; i++) {
+                        new MediaElementPlayer(mediaElements[i], {
+                            pluginPath: 'https://cdn.jsdelivr.net/npm/mediaelement@4.2.7/build/',
+                            shimScriptAccess: 'always',
+                            success: function() {
+                                var target = document.body.querySelectorAll('.player'),
+                                    targetTotal = target.length;
+                                for (var j = 0; j < targetTotal; j++) {
+                                    target[j].style.visibility = 'visible';
+                                }
+                            }
+                        });
+                    }
+                });
+            </script>
+
+    </body>
+
+    </html>

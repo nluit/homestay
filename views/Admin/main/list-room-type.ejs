@@ -1,0 +1,80 @@
+<div class="main-panel">
+
+    <div class="content-wrapper">
+        <div class="page-header">
+            <h3 class="page-title">
+                LIST OF ROOM TYPE
+            </h3>
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="#">Admin</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Danh sách</li>
+                </ol>
+            </nav>
+        </div>
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title text-right">
+                    <a href="/admin/add-room-type" class="text-primary"> <i class="fa fa-plus "> </i> Add room type</a>
+                </h4>
+
+                <div class="row">
+
+
+                    <div class="col-12">
+                        <div class="table-responsive">
+                            <table id="order-listing" class="table">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>NAME </th>
+                                        <th>MAX CUSTOMER </th>
+                                        <th>SIZE</th>
+                                        <th>PRICE</th>
+                                        <th>FEATURE</th>
+
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <% data.map((item,i)=>{%>
+                                        <tr>
+                                            <td>
+                                                <%= item.ROOMTYPE_ID %>
+                                            </td>
+
+                                            <td>
+                                                <%= item.ROOMTYPE_NAME %>
+                                            </td>
+                                            <td>
+                                                <%= item.ROOMTYPE_MAXCUSNUM %>
+                                            </td>
+                                            <td>
+                                                <%= item.ROOMTYPE_SIZE %>
+                                            </td>
+                                            <td>
+                                                <%= item.ROOMTYPE_PRICE %>
+                                            </td>
+                                            <td>
+                                                <% var list =item.ROOMTYPE_FTLIST.split(";") 
+                                                        list.map(function(i){ %>
+                                                    <span><img src="<%= i %>" alt="image" /></span>
+                                                    <% })%>
+
+                                            </td>
+                                        </tr>
+
+                                        <%})%>
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
+        <br>
+
+
+        <br>
+    </div>

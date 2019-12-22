@@ -1,0 +1,71 @@
+<div class="main-panel">
+    <div class="content-wrapper">
+        <div class="page-header">
+            <h3 class="page-title">
+                LIST OF FEATURE
+            </h3>
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="#">Admin</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Features</li>
+                </ol>
+            </nav>
+        </div>
+        <div class="row">
+
+            <div class="col-lg-12 grid-margin stretch-card">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Features</h4>
+                        <br>
+                        <form action="/admin/feature" method="POST">
+                            <div class="input-group mb-3" style="width: 50%;">
+                                <input type="text" class="form-control" required name="featureName" placeholder="Feature Name" aria-describedby="basic-addon1">
+                                <input type="text" class="form-control ml-3" required name="featureIcon" placeholder="Feature Icon" aria-describedby="basic-addon1">
+
+                                <div class="input-group-prepend">
+                                    <input type="submit" value="Create" style="margin-left:0.5rem" class="btn btn-success">
+                                </div>
+                            </div>
+                        </form>
+
+                        <div class="table-responsive">
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>
+                                            ID
+                                        </th>
+                                        <th>
+                                            Feature Icon
+                                        </th>
+                                        <th>
+                                            Feature Name
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <% data.map(function(item,i){ %>
+                                        <tr>
+                                            <td>
+                                                <%= item.FEATURE_ID %>
+                                            </td>
+                                            <td class="py-1">
+                                                <img src="<%= item.FEATURE_ICON %>" alt="image" />
+                                            </td>
+                                            <td>
+                                                <%= item.FEATURE_NAME %>
+                                            </td>
+
+                                        </tr>
+                                        <% }) %>
+                                </tbody>
+
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>

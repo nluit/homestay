@@ -1,0 +1,108 @@
+<% include ./layouts/header %>
+
+    <body>
+
+        <div class="site-wrap">
+
+            <!-- .site-mobile-menu -->
+
+
+            <% include ./layouts/menu%>
+
+                <% include ./layouts/slider %>
+
+                    <div class="container">
+
+                        <div class="row mt-5">
+                            <div class="col-md-6 mx-auto text-center mb-5 section-heading">
+                                <h2>LOGIN</h2>
+                            </div>
+                        </div>
+                        <form action="/login" method="POST">
+                            <div class="row">
+                                <div class="col-md-10 mx-auto">
+                                    <div class="site-block-27">
+                                        <label for="" class="label text-left text-danger">USERNAME</label><br>
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text" id="basic-addon1"><i class="fa fa-user" aria-hidden="true"></i></span>
+                                            </div>
+                                            <input type="text" name="username" class="form-control">
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="row my-2 mb-5">
+                                <div class="col-md-10 mx-auto">
+                                    <div class="site-block-27">
+                                        <label for="" class="label text-left text-danger">PASSWORD</label><br>
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text" id="basic-addon1"><i class="fa fa-lock" aria-hidden="true"></i></span>
+                                            </div>
+                                            <input type="password" name="password" class="form-control">
+                                        </div>
+                                        <a href="/register">Don't have a account ? Register </a>
+
+                                        <input type="submit" class="btn btn-success form-control my-3">
+
+                                    </div>
+                                </div>
+
+                            </div>
+                        </form>
+
+
+                    </div>
+
+        </div>
+
+
+
+
+        <% include ./layouts/footer %>
+            </div>
+
+            <script src="/suites/suites/js/jquery-3.3.1.min.js"></script>
+            <script src="/suites/suites/js/jquery-migrate-3.0.1.min.js"></script>
+            <script src="/suites/suites/js/jquery-ui.js"></script>
+            <script src="/suites/suites/js/popper.min.js"></script>
+            <script src="/suites/suites/js/bootstrap.min.js"></script>
+            <script src="/suites/suites/js/owl.carousel.min.js"></script>
+            <script src="/suites/suites/js/jquery.stellar.min.js"></script>
+            <script src="/suites/suites/js/jquery.countdown.min.js"></script>
+            <script src="/suites/suites/js/jquery.magnific-popup.min.js"></script>
+            <script src="/suites/suites/js/bootstrap-datepicker.min.js"></script>
+            <script src="/suites/suites/js/aos.js"></script>
+
+
+            <script src="/suites/suites/js/mediaelement-and-player.min.js"></script>
+
+            <script src="/suites/suites/js/main.js"></script>
+
+
+            <script>
+                document.addEventListener('DOMContentLoaded', function() {
+                    var mediaElements = document.querySelectorAll('video, audio'),
+                        total = mediaElements.length;
+
+                    for (var i = 0; i < total; i++) {
+                        new MediaElementPlayer(mediaElements[i], {
+                            pluginPath: 'https://cdn.jsdelivr.net/npm/mediaelement@4.2.7/build/',
+                            shimScriptAccess: 'always',
+                            success: function() {
+                                var target = document.body.querySelectorAll('.player'),
+                                    targetTotal = target.length;
+                                for (var j = 0; j < targetTotal; j++) {
+                                    target[j].style.visibility = 'visible';
+                                }
+                            }
+                        });
+                    }
+                });
+            </script>
+
+    </body>
+
+    </html>
