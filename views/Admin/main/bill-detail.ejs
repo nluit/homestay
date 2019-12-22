@@ -16,162 +16,168 @@
             <div class="col-lg-12 grid-margin stretch-card">
                 <div class="card">
                     <div class="card-body">
+                        <%if(data[0].BILL_STATUS ==2) {%>
+                            <h4 class="card-title text-right">
+                                <a href="/admin/bill-payment/ <%= data[0].BILL_ID%>" class="text-primary mr-5"> <i class="fa fa-plus"> </i> PAY BILL </a>
 
-                        <h4 class="card-title text-right">
-                            <a href="/admin/bill-service/ <%= data[0].BILL_ID%>" class="text-primary mr-5"> <i class="fa fa-plus"> </i> PAY BILL </a>
+                                <a href="/admin/bill-service/ <%= data[0].BILL_ID%>" class="text-primary"> <i class="fa fa-plus "> </i> Add service TO Bill </a>
+                            </h4>
+                            <%}%>
+                                <br>
+                                <div class="card border-primary">
+                                    <h1 class=" text-center my-3">
+                                        BILL DETAIL
+                                    </h1>
 
-                            <a href="/admin/bill-service/ <%= data[0].BILL_ID%>" class="text-primary"> <i class="fa fa-plus "> </i> Add service TO Bill </a>
-                        </h4>
-                        <br>
-                        <div class="card border-primary">
-                            <h1 class=" text-center my-3">
-                                BILL DETAIL
-                            </h1>
+                                    <hr>
+                                    <div class="card-body">
+                                        <h1 class="card-title text-danger"> CUSTOMER INFO
+                                        </h1>
+                                        <h4 class="card-title">Bill :
+                                            <%= data[0].BILL_ID%>
+                                        </h4>
+                                        <h4 class="card-title">Customer ID:
+                                            <%= data[0].CUS_ID%>
+                                        </h4>
+                                        <h4 class="card-title">Date Checkin:
+                                            <%= data[0].BILL_CHECKINDATE%>
+                                        </h4>
+                                        <h4 class="card-title">Date Checkout:
+                                            <%= data[0].BILL_CHECKOUTDATE%>
+                                        </h4>
+                                        <hr>
+                                    </div>
+                                    <div class="card-body">
+                                        <h1 class="card-title text-danger"> ROOM INFO
+                                        </h1>
+                                        <table class="table table-striped">
+                                            <thead>
+                                                <tr>
+                                                    <th>
+                                                        ROOM ID
+                                                    </th>
+                                                    <th>
+                                                        ROOM TYPE NAME
+                                                    </th>
+                                                    <th>
+                                                        FACILITY NAME
+                                                    </th>
+                                                    <th>
+                                                        FACILITY ADDRESS
+                                                    </th>
 
-                            <hr>
-                            <div class="card-body">
-                                <h1 class="card-title text-danger"> CUSTOMER INFO
-                                </h1>
-                                <h4 class="card-title">Bill :
-                                    <%= data[0].BILL_ID%>
-                                </h4>
-                                <h4 class="card-title">Customer ID:
-                                    <%= data[0].CUS_ID%>
-                                </h4>
-                                <h4 class="card-title">Date Checkin:
-                                    <%= data[0].BILL_CHECKINDATE%>
-                                </h4>
-                                <h4 class="card-title">Date Checkout:
-                                    <%= data[0].BILL_CHECKOUTDATE%>
-                                </h4>
-                                <hr>
-                            </div>
-                            <div class="card-body">
-                                <h1 class="card-title text-danger"> ROOM INFO
-                                </h1>
-                                <table class="table table-striped">
-                                    <thead>
-                                        <tr>
-                                            <th>
-                                                ROOM ID
-                                            </th>
-                                            <th>
-                                                ROOM TYPE NAME
-                                            </th>
-                                            <th>
-                                                FACILITY NAME
-                                            </th>
-                                            <th>
-                                                FACILITY ADDRESS
-                                            </th>
-
-                                            <th>
-                                                FACILITY PHONE
-                                            </th>
-                                            <th>
-                                                BOOK COST
-                                            </th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <% data.map(function(item){%>
-                                            <tr>
-                                                <td>
-                                                    <%= item.ROOM_ID%>
-                                                </td>
-                                                <td>
-                                                    <%= item.ROOMTYPE_NAME%>
-                                                </td>
-                                                <td>
-                                                    <%= item.FAC_NAME%>
-                                                </td>
-                                                <td>
-                                                    <%= item.FAC_ADDRESS%>
-                                                </td>
-                                                <td>
-                                                    <%= item.FAC_PHONE%>
-                                                </td>
-                                                <td>
-                                                    <%= item.cost%>
-                                                </td>
-                                            </tr>
-                                            <%})%>
-
-                                                <tr class="mt-5">
-                                                    <td colspan="6" class="text-right">
-                                                        <h4><b>BILL BOOKCOST : &nbsp; <%= data[0].BILL_BOOKCOST%> </b></h4>
-                                                    </td>
+                                                    <th>
+                                                        FACILITY PHONE
+                                                    </th>
+                                                    <th>
+                                                        BOOK COST
+                                                    </th>
                                                 </tr>
+                                            </thead>
+                                            <tbody>
+                                                <% data.map(function(item){%>
+                                                    <tr>
+                                                        <td>
+                                                            <%= item.ROOM_ID%>
+                                                        </td>
+                                                        <td>
+                                                            <%= item.ROOMTYPE_NAME%>
+                                                        </td>
+                                                        <td>
+                                                            <%= item.FAC_NAME%>
+                                                        </td>
+                                                        <td>
+                                                            <%= item.FAC_ADDRESS%>
+                                                        </td>
+                                                        <td>
+                                                            <%= item.FAC_PHONE%>
+                                                        </td>
+                                                        <td>
+                                                            <%= item.cost%>
+                                                        </td>
+                                                    </tr>
+                                                    <%})%>
 
-                                    </tbody>
+                                                        <tr class="mt-5">
+                                                            <td colspan="6" class="text-right">
+                                                                <h4><b>BILL BOOKCOST : &nbsp; <%= data[0].BILL_BOOKCOST%> </b></h4>
+                                                            </td>
+                                                        </tr>
 
-                                </table>
-                            </div>
-                            <hr>
-                            <div class="card-body">
-                                <h1 class="card-title text-danger"> BILL SERVICE
-                                </h1>
-                                <table class="table table-striped">
-                                    <thead>
-                                        <tr>
-                                            <th>
-                                                SERVICE ID
-                                            </th>
-                                            <th>
-                                                SERVICE NAME
-                                            </th>
-                                            <th>
-                                                SERVICE PRICE
-                                            </th>
-                                            <th>
-                                                SERVICE DURATION
-                                            </th>
+                                            </tbody>
 
-                                            <th>
-                                                QUANTITY
-                                            </th>
-                                            <th>
-                                                COST
-                                            </th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <% billservice.map(function(item){%>
-                                            <tr>
-                                                <td>
-                                                    <%= item.SERVICE_ID%>
-                                                </td>
-                                                <td>
-                                                    <%= item.SERVICE_NAME%>
-                                                </td>
-                                                <td>
-                                                    <%= item.SERVICE_PRICE%>
-                                                </td>
-                                                <td>
-                                                    <%= item.SERVICE_DUR%>
-                                                </td>
-                                                <td>
-                                                    <%= item.service_quantity%>
-                                                </td>
-                                                <td>
-                                                    <%= item.service_cost%>
-                                                </td>
-                                            </tr>
-                                            <%})%>
-                                                <tr class="mt-5">
-                                                    <td colspan="6" class="text-right">
-                                                        <h4><b>BILL EXTRACOST : &nbsp; <%= data[0].BILL_EXTRACOST%> </b></h4>
-                                                    </td>
+                                        </table>
+                                    </div>
+                                    <hr>
+                                    <div class="card-body">
+                                        <h1 class="card-title text-danger"> BILL SERVICE
+                                        </h1>
+                                        <table class="table table-striped">
+                                            <thead>
+                                                <tr>
+                                                    <th>
+                                                        SERVICE ID
+                                                    </th>
+                                                    <th>
+                                                        SERVICE NAME
+                                                    </th>
+                                                    <th>
+                                                        SERVICE PRICE
+                                                    </th>
+                                                    <th>
+                                                        SERVICE DURATION
+                                                    </th>
+
+                                                    <th>
+                                                        QUANTITY
+                                                    </th>
+                                                    <th>
+                                                        COST
+                                                    </th>
                                                 </tr>
+                                            </thead>
+                                            <tbody>
+                                                <% billservice.map(function(item){%>
+                                                    <tr>
+                                                        <td>
+                                                            <%= item.SERVICE_ID%>
+                                                        </td>
+                                                        <td>
+                                                            <%= item.SERVICE_NAME%>
+                                                        </td>
+                                                        <td>
+                                                            <%= item.SERVICE_PRICE%>
+                                                        </td>
+                                                        <td>
+                                                            <%= item.SERVICE_DUR%>
+                                                        </td>
+                                                        <td>
+                                                            <%= item.service_quantity%>
+                                                        </td>
+                                                        <td>
+                                                            <%= item.service_cost%>
+                                                        </td>
+                                                    </tr>
+                                                    <%})%>
+                                                        <tr class="mt-5">
+                                                            <td colspan="6" class="text-right">
+                                                                <h4><b>BILL EXTRACOST : &nbsp; <%= data[0].BILL_EXTRACOST%> </b></h4>
+                                                            </td>
+                                                        </tr>
 
-                                    </tbody>
+                                            </tbody>
 
-                                </table>
-                                <h4 class="text-danger text-center mt-5"><b>BILL TOTAL : &nbsp; <%= data[0].BILL_TOTAL%>  </b></h4>
+                                        </table>
+                                        <h4 class="text-danger text-center mt-5">
+                                            <b>BILL TOTAL : &nbsp; <%= data[0].BILL_TOTAL%>
+                                                 <%if(data[0].BILL_STATUS ==3){%> 
+                                                    <span>(PAID)</span>
+                                                    <%}%>
+                                                </b></h4>
 
-                            </div>
+                                    </div>
 
-                        </div>
+                                </div>
 
                     </div>
                 </div>

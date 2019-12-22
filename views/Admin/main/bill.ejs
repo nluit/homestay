@@ -1,5 +1,4 @@
 <div class="main-panel">
-
     <div class="content-wrapper">
         <div class="page-header">
             <h3 class="page-title">
@@ -69,18 +68,19 @@
                                                 <%= item.BILL_TOTAL%>
                                             </td>
                                             <td class="text-center text-success">
-                                                <% if(item.BILL_STATUS == 3) {%>
-                                                    <a href=""><i class="fa fa-check text-success" aria-hidden="true"></i></a>
-                                                    <a href="/admin/bill-detail/<%= item.BILL_ID %>"><i class="fa fa-eye" aria-hidden="true"></i>&nbsp;&nbsp;</a>
 
+                                                <%if (item.BILL_STATUS == 1) {%>
+                                                    <a href="/admin/forward-bill/<%= item.BILL_ID %>/<%= item.BILL_STATUS%>"><i class="fa fa-forward text-danger" aria-hidden="true"></i></a>
                                                     <%}%>
-                                                        <%if (item.BILL_STATUS == 1) {%>
-                                                            <a href="/admin/forward-bill/<%= item.BILL_ID %>/<%= item.BILL_STATUS%>"><i class="fa fa-forward text-danger" aria-hidden="true"></i></a>
-                                                            <%}%>
-                                                                <%if (item.BILL_STATUS == 2) {%>
-                                                                    <a href="/admin/bill-detail/<%= item.BILL_ID %>"><i class="fa fa-eye" aria-hidden="true"></i>&nbsp;&nbsp;</a>
+                                                        <%if (item.BILL_STATUS == 2) {%>
+                                                            <a href="/admin/bill-detail/<%= item.BILL_ID %>"><i class="fa fa-eye" aria-hidden="true"></i>&nbsp;&nbsp;</a>
 
-                                                                    <a href="/admin/bill-service/ <%= item.BILL_ID%>"> <i class="fa fa-plus text-primary" aria-hidden="true"></i></a>
+                                                            <a href="/admin/bill-service/ <%= item.BILL_ID%>"> <i class="fa fa-plus text-primary" aria-hidden="true"></i></a>
+                                                            <%}%>
+                                                                <% if(item.BILL_STATUS == 3) {%>
+                                                                    <a href="/admin/bill-detail/<%= item.BILL_ID %>"><i class="fa fa-eye" aria-hidden="true"></i>&nbsp;&nbsp;</a>
+                                                                    <a href=""><i class="fa fa-check text-success" aria-hidden="true"></i></a>
+
                                                                     <%}%>
                                             </td>
                                         </tr>

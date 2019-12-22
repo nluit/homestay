@@ -21,10 +21,6 @@ var contactRouter = require('./routes/page/contact');
 var customerRouter = require('./routes/admin/customer');
 var billRouter = require('./routes/admin/bill');
 
-
-
-
-
 var app = express();
 
 // view engine setup

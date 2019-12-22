@@ -16,16 +16,12 @@ router.get('/admin/bill', middleware.auth, function(req, res, next) {
         }
         if (results[0].length != 0) {
 
-
             console.log(results[0]);
             res.render('Admin/bill', { title: 'Bill', data: results[0] });
-
 
         } else {
             return res.redirect('/admin/home');
         }
-
-
     });
 
 
@@ -52,9 +48,6 @@ router.get('/admin/bill-detail/:id', middleware.auth, function(req, res, next) {
 
                 }
             })
-
-
-
         }
 
     });
@@ -117,6 +110,30 @@ router.get('/add-bill-service', middleware.auth, function(req, res, next) {
 
 });
 
+router.get('/admin/bill-payment/:id', middleware.auth, function(req, res, next) {
+
+    let sql2 = `CALL payBill(?)`;
+    pool.query(sql2, req.params.id, function(error, result, fields) {
+        if (error) {
+            console.log(error);
+            res.redirect('/admin/bill-detail/' + req.params.id);
+        } else {
+            res.redirect('/admin/bill-detail/' + req.params.id);
+        }
+    })
+});
 
 
+router.get('/admin/revenue', middleware.auth, function(req, res, next) {
+
+    let sql2 = `CALL viewIncomeStat()`;
+    pool.query(sql2, function(error, result, fields) {
+        if (error) {
+            console.log(error);
+        } else {
+            console.log(result[0]);
+            res.render('Admin/revenue', { title: "Revenue", data: result[0] })
+        }
+    })
+});
 module.exports = router;
