@@ -1,11 +1,11 @@
 var express = require('express');
 var router = express.Router();
+var middleware = require('../../middleware/middleware');
 
-var mysql = require('mysql');
 var pool = require('../../config/connection');
 
 /* GET home page. */
-router.get('/admin/bill', function(req, res, next) {
+router.get('/admin/bill', middleware.auth, function(req, res, next) {
 
     let sql = `CALL getBill(null)`;
 
@@ -31,7 +31,7 @@ router.get('/admin/bill', function(req, res, next) {
 
 });
 
-router.get('/admin/bill-detail/:id', function(req, res, next) {
+router.get('/admin/bill-detail/:id', middleware.auth, function(req, res, next) {
 
     let sql = `CALL getBillRoom(?)`;
 
@@ -62,7 +62,7 @@ router.get('/admin/bill-detail/:id', function(req, res, next) {
 
 });
 
-router.get('/admin/forward-bill/:id/:status', function(req, res, next) {
+router.get('/admin/forward-bill/:id/:status', middleware.auth, function(req, res, next) {
 
     let sql = `CALL getBillRoom(?)`;
 
@@ -86,7 +86,7 @@ router.get('/admin/forward-bill/:id/:status', function(req, res, next) {
 });
 
 
-router.get('/admin/bill-service/:id', function(req, res, next) {
+router.get('/admin/bill-service/:id', middleware.auth, function(req, res, next) {
 
     let sql2 = `CALL getServiceList(?)`;
     pool.query(sql2, req.params.id, function(error, result, fields) {
@@ -100,7 +100,7 @@ router.get('/admin/bill-service/:id', function(req, res, next) {
     })
 });
 
-router.get('/add-bill-service', function(req, res, next) {
+router.get('/add-bill-service', middleware.auth, function(req, res, next) {
     console.log(req.query.service_id, req.query.bill_id, req.query.qty);
     let sql2 = `CALL addService(?,?,?)`;
     pool.query(sql2, [req.query.service_id, req.query.bill_id, req.query.qty], function(error, result, fields) {

@@ -1,11 +1,12 @@
 var express = require('express');
 var router = express.Router();
 var pool = require('../../config/connection');
+var middleware = require('../../middleware/middleware');
 
 
 /* GET home page. */
 
-router.get('/admin/list-service', function(req, res, next) {
+router.get('/admin/list-service', middleware.auth, function(req, res, next) {
     pool.query('SELECT * FROM service', function(error, results, fields) {
         if (error) throw error;
         res.render('Admin/service', { data: results })
@@ -13,7 +14,7 @@ router.get('/admin/list-service', function(req, res, next) {
 
 });
 
-router.get('/admin/add-service', function(req, res, next) {
+router.get('/admin/add-service', middleware.auth, function(req, res, next) {
     pool.query('SELECT * FROM facility', function(error, results, fields) {
         if (error) throw error;
         pool.query('SELECT MAX(SERVICE_ID)+1 as MAXID FROM service', function(error, result, fields) {
@@ -26,7 +27,7 @@ router.get('/admin/add-service', function(req, res, next) {
 });
 
 
-router.post('/admin/add-service', function(req, res, next) {
+router.post('/admin/add-service', middleware.auth, function(req, res, next) {
 
     console.log(req.body);
     var service = {

@@ -3,6 +3,7 @@ var router = express.Router();
 var crypto = require('crypto');
 var pool = require('../../config/connection');
 var mailconfig = require('../../config/mail.json')
+var middleware = require('../../middleware/middleware');
 
 var nodemailer = require('nodemailer');
 
@@ -10,7 +11,7 @@ var nodemailer = require('nodemailer');
 var middleware = require('../../middleware/middleware');
 
 /* GET home page. */
-router.get('/admin/customer', function(req, res, next) {
+router.get('/admin/customer', middleware.auth, function(req, res, next) {
 
     pool.query('SELECT * FROM customer ', function(error, results, fields) {
 
@@ -22,7 +23,7 @@ router.get('/admin/customer', function(req, res, next) {
 
 });
 
-router.get('/admin/new-customer', function(req, res, next) {
+router.get('/admin/new-customer', middleware.auth, function(req, res, next) {
 
     console.log(req.query);
     var token = crypto.randomBytes(64).toString('hex');

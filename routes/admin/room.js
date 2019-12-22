@@ -2,9 +2,10 @@ var express = require('express');
 var router = express.Router();
 
 var pool = require('../../config/connection');
+var middleware = require('../../middleware/middleware');
 
 /* GET home page. */
-router.get('/admin/add-room', function(req, res, next) {
+router.get('/admin/add-room', middleware.auth, function(req, res, next) {
 
     pool.query('SELECT * FROM roomtype', function(error, result, fields) {
         if (error) throw error;
@@ -19,7 +20,7 @@ router.get('/admin/add-room', function(req, res, next) {
 
 });
 
-router.get('/admin/list-room', function(req, res, next) {
+router.get('/admin/list-room', middleware.auth, function(req, res, next) {
 
     pool.query(`SELECT room.*,facility.fac_name,roomtype.roomtype_name FROM roomtype,room,facility where roomtype.roomtype_id= room.roomtype_id and facility.fac_id=room.fac_id`, function(error, result, fields) {
         console.log(result);
@@ -30,7 +31,7 @@ router.get('/admin/list-room', function(req, res, next) {
 });
 
 
-router.post('/admin/add-room', function(req, res, next) {
+router.post('/admin/add-room', middleware.auth, function(req, res, next) {
     var room = { ROOMTYPE_ID: req.body.roomtype, FAC_ID: req.body.facility, ROOM_STATUS: req.body.status, ROOM_IMG: req.body.image };
     var query = pool.query('INSERT INTO room SET ?', room, function(error, results, fields) {
         if (error) throw error;
